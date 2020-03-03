@@ -1,12 +1,12 @@
 <template>  
       <div>
-          // Поиск ресторанов
+         
           <form class="uk-search uk-search-large uk-align-center uk-margin">
               <span uk-search-icon></span>
               <input class="uk-search-input" v-model="query" type="search" placeholder="Search...">
           </form>
 
-          // Карточки с ресторанами
+  
           <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@m uk-margin" v-for="restaurant in filteredList" v-bind:key="restaurant" uk-grid>
               <div class="uk-card-media-left uk-cover-container">
                   <img :src="'http://localhost:1337/' + restaurant.image.url" alt="" uk-cover>
@@ -16,14 +16,11 @@
                   <div class="uk-card-body">
                       <h3 class="uk-card-title">{{ restaurant.name }}</h3>
                       <p>{{ restaurant.description }}</p>
-                      // Ссылка на рестораны
                       <router-link :to="{ name: 'restaurants-id', params: { id: restaurant.id }}" tag="a" class="uk-button uk-button-primary">See dishes
                       </router-link>
                   </div>
               </div>
           </div>
-
-          // Если ресторанов не найдено
           <div class="uk-container uk-container-center uk-text-center" v-if="filteredList.length == 0">
            <img src="https://assets-ouch.icons8.com/preview/19/52de2377-696e-4194-8c63-0a81aef60b4f.png" height="800" width="800">
            <p>No restaurants found</p>
